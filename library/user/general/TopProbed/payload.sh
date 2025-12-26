@@ -24,7 +24,28 @@ FILENAME="$(TEXT_PICKER "Enter a File Name." "TopSSIDs_$(date +%Y%m%d_%H%M%S).tx
 LOG " "
 
 #SQL Query to find rows in the ssid table that have no BSSID but does have an SSID. Count that row only if it is distinct.
-SQL='SELECT COUNT(DISTINCT wifi_device) AS count, ssid FROM ssid WHERE bssid IS NULL AND LENGTH(ssid) > 0 GROUP BY ssid HAVING COUNT (DISTINCT wifi_device)>1 ORDER BY count DESC;'
+
+SQL="
+SELECT
+    COUNT(DISTINCT wd.mac) AS probe_count,
+    CASE
+        WHEN s.ssid IS NULL OR s.ssid = '' THEN '<HIDDEN>'
+        ELSE s.ssid
+    END AS ssid_name
+FROM
+    ssid s
+    LEFT JOIN wifi_device wd ON s.wifi_device = wd.hash
+WHERE
+    s.bssid IS NULL
+    AND LENGTH(s.ssid) > 0
+GROUP BY
+    s.ssid
+HAVING
+    COUNT(DISTINCT wd.mac) > 1
+ORDER BY
+    probe_count DESC,
+    ssid_name ASC;
+"
 
 sqlite3 -separator '|' "$RECONDB" "$SQL" > "$INFOPATH/$FILENAME"
 
