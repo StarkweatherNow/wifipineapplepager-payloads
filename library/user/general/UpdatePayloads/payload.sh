@@ -2,7 +2,7 @@
 # Title: Update Payloads
 # Description: Downloads and syncs all payloads from github.
 # Author: cococode
-# Version: 1.2
+# Version: 1.3
 
 # === CONFIGURATION ===
 GH_ORG="hak5"
@@ -93,6 +93,11 @@ process_payloads() {
 
         # 1. NEW PAYLOAD
         if [ ! -d "$target_path" ]; then
+            # 1a. NEW ALERT - disable by default
+            in_alerts_dir=^alerts/
+            if [[ "$rel_path" =~ $in_alerts_dir ]]; then
+                target_path=$disabled_path
+            fi
             mkdir -p "$(dirname "$target_path")"
             cp -rf "$src_path" "$target_path"
             LOG_BUFFER+="[ NEW ] $(get_dir_title $src_path)\n"
