@@ -1,4 +1,4 @@
-[# Blue Clues
+# Blue Clues
 
 **Blue Clues** is an active Bluetooth auditing tool for the WiFi Pineapple Pager. Unlike passive scanners that simply listen, Blue Clues actively interrogates devices to uncover their **Vendor**, **Device Type**, and **Services**.
 
@@ -77,4 +77,4 @@ You can call the Log Viewer from this payload (or others) using the following ar
 /root/payloads/user/general/log_viewer/payload.sh "/root/loot/blue_clues/scan.txt" 1
 
 ](https://github.com/hak5/wifipineapplepager-payloads/pull/108)```
-
+```
