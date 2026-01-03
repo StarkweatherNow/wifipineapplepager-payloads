@@ -20,26 +20,31 @@ This tool has been upgraded from a simple scanner to an **Active Auditor**. It n
 
 **1. Mission Briefing**
 The payload begins by confirming the "Audit" workflow, which involves active connection attempts.
+
 ![Workflow](screens/Capture_01.png)
 
 **2. Feedback Configuration**
 Decide how the device should alert you when a *new* unique target is identified.
 * **Silent:** Logs data invisibly.
 * **LED/Vibe:** Visual (Red Flash) or Haptic buzz upon finding a new device.
+  
 ![Options](screens/Capture_02.png)
 
 **3. Deep Scan Selection**
 Choose your depth of analysis:
 * **No (Standard):** Fast. Grabs MAC, Vendor, Class, and Name. Skips Service Discovery if the device name is known.
 * **Yes (Slower):** Thorough. Connects to *every* device to list all available services.
+  
 ![Deep Scan](screens/Capture_06.png)
 
 **4. Set Duration**
 Enter the runtime for the audit (in minutes).
+
 ![Duration Picker](screens/Capture_05.png)
 
 **5. Execution**
 The device confirms the save location and begins the audit loop.
+
 ![Start](screens/Capture_08.png)
 
 ---
@@ -49,6 +54,7 @@ The device confirms the save location and begins the audit loop.
 Blue Clues is designed to work seamlessly with the **Log Viewer** payload. Upon completion, it automatically passes the captured data to the viewer for immediate analysis.
 
 **Sample Output:**
+
 ![Log View](screens/Capture_09.png)
 
 ---
@@ -71,3 +77,4 @@ You can call the Log Viewer from this payload (or others) using the following ar
 /root/payloads/user/general/log_viewer/payload.sh "/root/loot/blue_clues/scan.txt" 1
 
 ](https://github.com/hak5/wifipineapplepager-payloads/pull/108)```
+
