@@ -26,4 +26,3 @@ ALERT "Operation Complete"
 LOG " "
 LOG "OPERATION COMPLETE."
 LOG "To see the full results go to $INFOPATH/$FILENAME"
-root@skinny:~/payloads/user/Skinny_Tools/WindowsFriendlyHandshakes#
